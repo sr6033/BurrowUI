@@ -1,0 +1,5 @@
+{
+  "burrow" : {
+    "home" : "http://{burrow-url}/v2/kafka"
+  }
+}

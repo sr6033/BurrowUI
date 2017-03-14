@@ -1,0 +1,28 @@
+@keyframes CardAnimation {
+  0% {
+    padding-left: 100px;
+  }
+  100% {
+    padding-left: 0px;
+  }
+}
+
+@keyframes LogoAnimation {
+  0% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.card-animation {
+  animation: CardAnimation 1s;
+}
+
+.logo-animation {
+  display: block;
+  margin: auto;
+  opacity: 0.3;
+  animation: LogoAnimation 3s;
+}

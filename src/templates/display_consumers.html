@@ -1,0 +1,24 @@
+<table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp available-consumers-list">
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 10%">Status</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 60%">Consumer</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 10%">Total Lag</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 20%">Cluster</th>
+    <th style="width: 10%"></th>
+  </tr>
+  </thead>
+  <tbody *ngIf="consumers">
+  <tr *ngFor="let consumer of consumers | consumerSort">
+    <td class="mdl-data-table__cell--non-numeric" style="width: 10%" [ngClass]="{statusBad: consumer.status.status == 'ERR'}">{{ consumer.status.status }}</td>
+    <td class="mdl-data-table__cell--non-numeric" style="width: 60%">{{ consumer.request.group }}</td>
+    <td class="mdl-data-table__cell--non-numeric" style="width: 10%">{{ consumer.status.totallag }}</td>
+    <td class="mdl-data-table__cell--non-numeric" style="width: 20%">{{ consumer.request.cluster }}</td>
+    <td style="width: 10%">
+      <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" (click)="analyze(consumer.request.cluster, consumer.request.group)">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

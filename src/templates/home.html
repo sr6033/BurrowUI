@@ -1,0 +1,24 @@
+<div class="home">
+  <div class="cards">
+    <available_clusters_list></available_clusters_list>
+  </div>
+  <div class="consumers">
+    <div class="display_consumers_header">
+      <span class="list-title">
+        {{ listTitle }}
+      </span>
+    </div>
+    <hr>
+    <div style="text-align: center" *ngIf="!selectedCluster">
+      <img src="../assets/images/kafka.png" width="50%" class="logo-animation">
+    </div>
+    <div id="consumers_list" *ngIf="selectedCluster">
+      <div *ngIf="viewConsumerList">
+        <display_consumer_list></display_consumer_list>
+      </div>
+      <div *ngIf="viewTopicList">
+        <display_topic_list></display_topic_list>
+      </div>
+    </div>
+  </div>
+</div>

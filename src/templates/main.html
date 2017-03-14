@@ -1,0 +1,19 @@
+ <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+   <header class="mdl-layout__header">
+     <div class="mdl-layout__header-row">
+       <!-- Title -->
+       <a class="mdl-layout-title" href="#">Kafka Analysis Tool</a>
+       <!-- Add spacer, to align navigation to the right -->
+       <div class="mdl-layout-spacer"></div>
+       <span class="mdl-layout-title" *ngIf="consumer">{{ consumer }} : {{ environment }}</span>
+       <span class="mdl-layout-title" *ngIf="!consumer">Burrow Server: {{ burrowHome }}</span>       
+     </div>
+   </header>
+   <main class="mdl-layout__content">
+     <div class="page-content">
+       <!--Views Loaded Here-->
+       <router-outlet></router-outlet>
+     </div>
+   </main>
+ </div>
+
