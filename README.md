@@ -2,6 +2,16 @@
 This is a NodeJS/Angular 2 frontend UI for Kafka cluster monitoring with [Burrow](https://github.com/linkedin/Burrow "Burrow's GitHub").
 Again, this project is used as a support tool to build on top of the hard work already completed by the team at linkedin.
 
+![homepage](https://github.com/GeneralMills/BurrowUI/blob/master/screenshots/burrowHome.PNG)
+
+---
+
+![graph](https://github.com/GeneralMills/BurrowUI/blob/master/screenshots/graph.PNG)
+
+---
+
+![partitions](https://github.com/GeneralMills/BurrowUI/blob/master/screenshots/partition.PNG)
+
 ## Dependencies
 * [NodeJS](https://nodejs.org "Node's Homepage")
 * [Angular-CLI](https://cli.angular.io "Angular CLI's Homepage")
