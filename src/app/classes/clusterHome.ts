@@ -1,3 +1,4 @@
+import {PipeTransform, Injectable, Pipe} from "@angular/core";
 import {Request} from "./request";
 import {Cluster} from "./cluster";
 import {Consumer} from "./consumer";
@@ -21,3 +22,27 @@ export class ClusterHome {
   };
 
 }
+
+// This is used for filtering partition results
+@Pipe({
+  name: 'clusterSort',
+  pure: false
+})
+
+@Injectable()
+export class ClusterSortPipe implements PipeTransform {
+  transform(array: Array<any>): Array<string> {
+    if (array == null) return array;
+    array.sort((a: any, b: any) => {
+      if (a.request.cluster.toLowerCase() < b.request.cluster.toLowerCase()) {
+        return -1;
+      } else if (a.request.cluster.toLowerCase() > b.request.cluster.toLowerCase()) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    return array;
+  }
+}
+

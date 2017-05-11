@@ -1,5 +1,5 @@
 {
   "burrow" : {
-    "home" : "http://{burrow-url}/v2/kafka"
+    "home" : "http://burrow.genmills.com/v2/kafka"
   }
 }
