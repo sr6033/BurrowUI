@@ -9,6 +9,7 @@ import { BurrowService } from "../services/burrow.service";
 
 export class AppComponent implements OnInit {
   consumer: string;
+  topic: string;
   environment: string;
   burrowHome: string;
 
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
   getParams(): void {
     this.route.queryParams.subscribe((params: Params) => {
       this.consumer = params['consumer'];
+      this.topic = params['topic'];
       this.environment = params['cluster'];
     });
   }

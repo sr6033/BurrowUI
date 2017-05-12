@@ -3,6 +3,7 @@ import { BrowserModule }      from '@angular/platform-browser';
 import { ROUTES }             from '../routing/routes';
 import { AppComponent }       from '../components/app.component';
 import { ConsumerComponent }  from '../components/consumer.component';
+import { TopicComponent }  from '../components/topic.component';
 import { HomeComponent }      from "../components/home.component";
 import { ErrorComponent }     from "../components/error.component";
 import { LagGraphComponent}   from "../components/lag_graph.component"
@@ -21,12 +22,13 @@ import { AvailableClustersComponent } from "../components/available_clusters.com
 import { DisplayTopicsComponent } from "../components/display_topics.component";
 import { BurrowService } from "../services/burrow.service";
 import { HomeService } from "../services/home.service";
+import { TopicService } from "../services/topic.service";
 
 
 @NgModule({
   imports:      [ BrowserModule, RouterModule.forRoot(ROUTES), FormsModule, ChartsModule, HttpModule, JsonpModule ],
-  declarations: [ AppComponent, ConsumerComponent, HomeComponent, ErrorComponent, LagGraphComponent, PartitionTableComponent, PartitionFilterPipe, TopicSortPipe, ConsumerSortPipe, DisplayConsumersComponent, AvailableClustersComponent, DisplayTopicsComponent, ClusterSortPipe ],
+  declarations: [ AppComponent, ConsumerComponent, TopicComponent, HomeComponent, ErrorComponent, LagGraphComponent, PartitionTableComponent, PartitionFilterPipe, TopicSortPipe, ConsumerSortPipe, DisplayConsumersComponent, AvailableClustersComponent, DisplayTopicsComponent, ClusterSortPipe ],
   bootstrap:    [ AppComponent ],
-  providers:    [ ConsumerService, BurrowService, HomeService ],
+  providers:    [ ConsumerService, BurrowService, HomeService, TopicService ],
 })
 export class AppModule { }

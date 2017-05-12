@@ -6,7 +6,8 @@
        <!-- Add spacer, to align navigation to the right -->
        <div class="mdl-layout-spacer"></div>
        <span class="mdl-layout-title" *ngIf="consumer">{{ consumer }} : {{ environment }}</span>
-       <span class="mdl-layout-title" *ngIf="!consumer">Burrow Server: {{ burrowHome }}</span>       
+       <span class="mdl-layout-title" *ngIf="topic">{{ topic }} : {{ environment }}</span>
+       <span class="mdl-layout-title" *ngIf="!consumer && !topic">Burrow Server: {{ burrowHome }}</span>       
      </div>
    </header>
    <main class="mdl-layout__content">

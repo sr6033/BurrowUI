@@ -1,14 +1,20 @@
 <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp available-consumers-list">
   <thead>
   <tr>
-    <th class="mdl-data-table__cell--non-numeric" style="width: 70%">Topic</th>
-    <th class="mdl-data-table__cell--non-numeric" style="width: 30%">Cluster</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 80%">Topic</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 10%">Cluster</th>
+    <th style="width: 10%"></th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let topic of topics | topicSort">
-    <td class="mdl-data-table__cell--non-numeric" style="width: 70%">{{ topic.request.topic }}</td>
-    <td class="mdl-data-table__cell--non-numeric" style="width: 30%">{{ topic.request.cluster }}</td>
+    <td class="mdl-data-table__cell--non-numeric" style="width: 80%">{{ topic.request.topic }}</td>
+    <td class="mdl-data-table__cell--non-numeric" style="width: 10%">{{ topic.request.cluster }}</td>
+    <td style="width: 10%">
+      <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" (click)="analyze(topic.request.cluster, topic.request.topic)">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+    </td>
   </tr>
   </tbody>
 </table>
