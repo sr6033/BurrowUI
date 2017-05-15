@@ -130,3 +130,16 @@ a.mdl-layout-title {
 .statusWarning { background-color: #FFF59D; }
 
 .statusBad { background-color: #F48FB1; }
+
+.consumer-card {
+  margin-right: 2%;
+}
+
+#consumer_data {
+  margin: 2%;
+}
+
+.mdl-card__supporting-text > .consumer-detail {
+  display: inline-block;
+  width: 25%;
+}
