@@ -43,6 +43,9 @@ Again, this project is used as a support tool to build on top of the hard work a
    
 ## Build from Source
 1. CD to Project Root
+2. Install Dependencies
+
+   `npm install`
 2. Compile Project
 
    `ng build`
