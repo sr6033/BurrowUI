@@ -8,13 +8,13 @@
       <div class="row" style="float: left; width: 100%; height: 5%;">
         <div id="metrics_chips">
           <span class="metric-chip mdl-chip">
-            <span class="mdl-chip__text">Min Lag: {{ minLag }}</span>
+            <span class="mdl-chip__text">Min Lag: {{ minLag | number }}</span>
           </span>
           <span class="metric-chip mdl-chip">
-            <span class="mdl-chip__text">Max Lag: {{ maxLag }}</span>
+            <span class="mdl-chip__text">Max Lag: {{ maxLag | number }}</span>
           </span>
           <span class="metric-chip mdl-chip">
-            <span class="mdl-chip__text">Avg Lag: {{ avgLag }}</span>
+            <span class="mdl-chip__text">Avg Lag: {{ avgLag | number }}</span>
           </span>
         </div>
         <div class="col-md-6">

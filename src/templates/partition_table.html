@@ -27,9 +27,9 @@
           <td></td>
           <td class="mdl-data-table__cell--non-numeric">{{ partition.status }}</td>
           <td>{{ partition.partition }}</td>
-          <td>{{ partition.end.lag }}</td>
-          <td>{{ partition.start.offset }}</td>
-          <td>{{ partition.end.offset }}</td>
+          <td>{{ partition.end.lag | number }}</td>
+          <td>{{ partition.start.offset | number }}</td>
+          <td>{{ partition.end.offset | number }}</td>
           <td class="mdl-data-table__cell--non-numeric">{{ partition.topic }}</td>
           <td class="mdl-data-table__cell--non-numeric">{{ partition.end.timestamp | date:'medium' }}</td>
         </tr>
