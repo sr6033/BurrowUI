@@ -18,26 +18,12 @@ Again, this project is used as a support tool to build on top of the hard work a
 * [Docker (Optional)](https://www.docker.com "Docker's Homepage")
 
 ## Use With Docker
-1. CD to Project Root
-2. Compile Project
+1. Get latest docker image
 
-   `ng build`
-3. Build Docker Image
-
-   `sudo docker build -t kafka-analysis .`
-4. Start Options
-
-   ### Option 1: Run from Config
-   * Edit the file /server/config/server_config.json with your Burrow Host Home
-   * Startup with Command
+   `docker pull generalmills/burrowui`
+2. Run with Parameters
    
-     `sudo docker run -p 80:3000 -d kafka-analysis`
-   
-   *BurrowUI should now be live on your server at port 80*
-   ### Option 2: Run with Parameters
-   * Startup with Command
-   
-     `sudo docker run -p 80:3000 -e BURROW_HOME="http://{burrow_host}/v2/kafka" -d kafka-analysis`
+   `sudo docker run -p 80:3000 -e BURROW_HOME="http://{burrow_host}/v2/kafka" -d burrowui`
    
    *BurrowUI should now be live on your server at port 80*
    
