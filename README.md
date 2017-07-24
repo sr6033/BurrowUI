@@ -23,7 +23,7 @@ Again, this project is used as a support tool to build on top of the hard work a
    `docker pull generalmills/burrowui`
 2. Run with Parameters
    
-   `sudo docker run -p 80:3000 -e BURROW_HOME="http://{burrow_host}/v2/kafka" -d burrowui`
+   `sudo docker run -p 80:3000 -e BURROW_HOME="http://{burrow_host}/v2/kafka" -d generalmills/burrowui`
    
    *BurrowUI should now be live on your server at port 80*
    
