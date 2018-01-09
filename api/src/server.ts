@@ -5,7 +5,7 @@ import * as path from 'path';
 
 
 // import routers
-import { BurrowRouter } from './routes/Burrow';
+import { BurrowRouter } from './routes/burrow';
 
 
 // Server class
@@ -30,13 +30,13 @@ export class Server {
     router = express.Router();
 
     this.app.use('/', router);
-    this.app.use('/api', BurrowRouter);
+    this.app.use('/api', new BurrowRouter('http://localhost:8000').getRouter());
 
     // Angular dist output folder.
-    this.app.use(express.static(path.join(__dirname, '../dist')));
+    this.app.use(express.static(path.join(__dirname, '../../ui/dist')));
     // Send all other requests to the Angular app.
     this.app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../dist/index.html'));
+      res.sendFile(path.join(__dirname, '../../ui/dist/index.html'));
     });
   }
 }
