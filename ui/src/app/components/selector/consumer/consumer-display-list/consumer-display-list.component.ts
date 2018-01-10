@@ -23,8 +23,12 @@ export class ConsumerDisplayListComponent implements OnInit, AfterViewInit {
 
   public ngAfterViewInit() {
     this.burrow.consumers.subscribe((consumers) => {
-      this.consumers = consumers.consumers;
-      this.loadDataTable();
+      if (consumers) {
+        this.consumers = consumers.consumers;
+        this.loadDataTable();
+      } else {
+        this.consumers = undefined;
+      }
     });
   }
 

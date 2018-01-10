@@ -1,3 +1,26 @@
-<p *ngIf="topics">
-  topic-display-list works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Consumer Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Consumer </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Cluster Column -->
+    <ng-container matColumnDef="cluster">
+      <mat-header-cell *matHeaderCellDef> Cluster </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cluster}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+
