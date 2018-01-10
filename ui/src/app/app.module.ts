@@ -1,22 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import {
+  MatButtonModule, MatCardModule, MatCommonModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { ErrorComponent } from './components/error/error.component';
-import { ROUTES } from './routes/routes';
-import { NavigationComponent } from './components/navigation/navigation.component';
-
-// Material
-import {MatCardModule, MatGridListModule, MatToolbarModule} from '@angular/material';
-import { TopicViewComponent } from './components/topic-view/topic-view.component';
-import { ConsumerViewComponent } from './components/consumer-view/consumer-view.component';
-import { ClusterDisplayComponent } from './components/cluster-display/cluster-display.component';
 import { ClusterDisplayListComponent } from './components/cluster-display-list/cluster-display-list.component';
+import { ClusterDisplayComponent } from './components/cluster-display/cluster-display.component';
+import { ErrorComponent } from './components/error/error.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { ConsumerDisplayListComponent } from './components/selector/consumer/consumer-display-list/consumer-display-list.component';
 import { SelectorComponent } from './components/selector/selector.component';
-import {BurrowService} from './services/burrow.service';
-import {HttpClientModule} from '@angular/common/http';
+import { TopicDisplayListComponent } from './components/selector/topic/topic-display-list/topic-display-list.component';
+import { TopicViewComponent } from './components/topic-view/topic-view.component';
+import { ROUTES } from './routes/routes';
+import { BurrowService } from './services/burrow.service';
 
 
 @NgModule({
@@ -26,10 +28,11 @@ import {HttpClientModule} from '@angular/common/http';
     ErrorComponent,
     NavigationComponent,
     TopicViewComponent,
-    ConsumerViewComponent,
     ClusterDisplayComponent,
     ClusterDisplayListComponent,
-    SelectorComponent
+    SelectorComponent,
+    ConsumerDisplayListComponent,
+    TopicDisplayListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,13 @@ import {HttpClientModule} from '@angular/common/http';
     MatToolbarModule,
     MatCardModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatCommonModule
   ],
   providers: [
     BurrowService

@@ -71,7 +71,12 @@
       "check-type"
     ],
     "no-consecutive-blank-lines": false,
-    "no-implicit-dependencies": [true, "dev"]
+    "no-implicit-dependencies": [true, "dev"],
+    "object-literal-sort-keys": false,
+    "no-submodule-imports": false,
+    "variable-name": false,
+    "no-empty": false,
+    "no-console": false
   }
 ,
   "rulesDirectory": []

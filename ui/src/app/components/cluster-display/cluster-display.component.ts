@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AvailableCluster } from 'burrow-backend/dist/models/available-cluster';
+import { BurrowService } from '../../services/burrow.service';
 
 @Component({
   selector: 'app-cluster-display',
@@ -6,11 +8,25 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./cluster-display.component.css']
 })
 export class ClusterDisplayComponent implements OnInit {
-  @Input() cluster: string;
+  @Input() public cluster: string;
+  public detail: AvailableCluster;
 
-  constructor() { }
+  constructor(
+    private burrow: BurrowService
+  ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.burrow.getCluster(this.cluster).subscribe((cluster) => {
+      this.detail = cluster;
+    });
+  }
+
+  public viewConsumers() {
+    this.burrow.viewConsumers(this.cluster);
+  }
+
+  public viewTopics() {
+    this.burrow.viewTopics(this.cluster);
   }
 
 }

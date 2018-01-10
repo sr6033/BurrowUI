@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsumerViewComponent } from './consumer-view.component';
+import { TopicDisplayListComponent } from './topic-display-list.component';
 
-describe('ConsumerViewComponent', () => {
-  let component: ConsumerViewComponent;
-  let fixture: ComponentFixture<ConsumerViewComponent>;
+describe('TopicDisplayListComponent', () => {
+  let component: TopicDisplayListComponent;
+  let fixture: ComponentFixture<TopicDisplayListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConsumerViewComponent ]
+      declarations: [ TopicDisplayListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConsumerViewComponent);
+    fixture = TestBed.createComponent(TopicDisplayListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
