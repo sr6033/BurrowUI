@@ -3,11 +3,11 @@ import { Request, Response, Router } from 'express';
 
 export class BurrowRouter {
   public router: Router;
-  private url: string;
+  private burrow: BurrowService;
 
   constructor(url: string) {
-    this.url = url;
-    this.router = Router();
+      this.burrow = new BurrowService(url);
+      this.router = Router();
   }
 
   public getRouter(): Router {
@@ -16,8 +16,7 @@ export class BurrowRouter {
   }
 
   public getClusters(req: Request, res: Response) {
-      const burrow: BurrowService = new BurrowService(this.url);
-      burrow.getClusters()
+      this.burrow.getClusters()
           .then((data) => {
             res.status(200).json(data);
           })
@@ -30,8 +29,7 @@ export class BurrowRouter {
   }
 
   public getCluster(req: Request, res: Response) {
-      const burrow: BurrowService = new BurrowService(this.url);
-      burrow.getCluster(req.params.cluster)
+      this.burrow.getCluster(req.params.cluster)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -44,8 +42,7 @@ export class BurrowRouter {
   }
 
   public getConsumers(req: Request, res: Response) {
-      const burrow: BurrowService = new BurrowService(this.url);
-      burrow.getConsumers(req.params.cluster)
+      this.burrow.getConsumers(req.params.cluster)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -58,8 +55,7 @@ export class BurrowRouter {
   }
 
   public getConsumer(req: Request, res: Response) {
-      const burrow: BurrowService = new BurrowService(this.url);
-      burrow.getConsumer(req.params.cluster, req.params.consumer)
+      this.burrow.getConsumer(req.params.cluster, req.params.consumer)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -72,8 +68,7 @@ export class BurrowRouter {
   }
 
   public getTopics(req: Request, res: Response) {
-      const burrow: BurrowService = new BurrowService(this.url);
-      burrow.getTopics(req.params.cluster)
+      this.burrow.getTopics(req.params.cluster)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -86,8 +81,7 @@ export class BurrowRouter {
   }
 
   public getTopic(req: Request, res: Response) {
-      const burrow: BurrowService = new BurrowService(this.url);
-      burrow.getTopic(req.params.cluster, req.params.topic)
+      this.burrow.getTopic(req.params.cluster, req.params.topic)
       .then((data) => {
         res.status(200).json(data);
       })
@@ -100,11 +94,11 @@ export class BurrowRouter {
   }
 
   public buildRoutes() {
-    this.router.get('/', this.getClusters);
-    this.router.get('/:cluster', this.getCluster);
-    this.router.get('/:cluster/consumers', this.getConsumers);
-    this.router.get('/:cluster/consumers/:consumer', this.getConsumer);
-    this.router.get('/:cluster/topics', this.getTopics);
-    this.router.get('/:cluster/topics/:topic', this.getTopic);
+    this.router.get('/',  (req, res) => this.getClusters(req, res));
+    this.router.get('/:cluster', (req, res) => this.getCluster(req, res));
+    this.router.get('/:cluster/consumers', (req, res) => this.getConsumers(req, res));
+    this.router.get('/:cluster/consumers/:consumer', (req, res) => this.getConsumer(req, res));
+    this.router.get('/:cluster/topics', (req, res) => this.getTopics(req, res));
+    this.router.get('/:cluster/topics/:topic', (req, res) => this.getTopic(req, res));
   }
 }
