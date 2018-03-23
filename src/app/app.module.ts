@@ -9,21 +9,28 @@ import {RouterModule} from '@angular/router';
 import {ROUTES} from '../routes';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
+import { ClustersComponent } from './clusters/clusters.component';
+import {BurrowBackendService} from './services/burrow-backend.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    ClustersComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    BurrowBackendService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
