@@ -2,6 +2,7 @@
 
 # Angular Changelog
 CHANGELOG.md
+package-lock.json
 
 # compiled output
 /dist
