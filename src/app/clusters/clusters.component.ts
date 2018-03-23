@@ -14,7 +14,7 @@ export class ClustersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.burrow.clusters().subscribe((clusters) => {
+    this.burrow.getClusters().subscribe((clusters) => {
       this.clusters = clusters.clusters;
     });
   }
