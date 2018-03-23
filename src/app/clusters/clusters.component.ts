@@ -7,6 +7,7 @@ import {BurrowBackendService} from '../services/burrow-backend.service';
   styleUrls: ['./clusters.component.css']
 })
 export class ClustersComponent implements OnInit {
+  clusters: string[] = [];
 
   constructor(
     private burrow: BurrowBackendService
@@ -14,7 +15,7 @@ export class ClustersComponent implements OnInit {
 
   ngOnInit() {
     this.burrow.clusters().subscribe((clusters) => {
-      console.log(clusters);
+      this.clusters = clusters.clusters;
     });
   }
 
