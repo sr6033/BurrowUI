@@ -1,48 +1,28 @@
-import {PipeTransform, Injectable, Pipe} from "@angular/core";
-import {Request} from "./request";
-import {Cluster} from "./cluster";
-import {Consumer} from "./consumer";
-import {Topic} from "./topic";
+import {PipeTransform, Injectable, Pipe} from '@angular/core';
+import {Request} from './request';
+import {Cluster} from './cluster';
+import {Consumer} from './consumer';
+import {Topic} from './topic';
 
 export class ClusterHome {
   public consumers:  Consumer[];
   public topics: Topic[];
-  public isError: boolean = false;
-  public isWarning: boolean = false;
-  public isOkay: boolean = true;
+  public isError = false;
+  public isWarning = false;
+  public isOkay = true;
+  public clusterName = '';
+  public numConsumers = 0;
+  public numTopics = 0;
 
   constructor(
     public error:      string,
     public message:    string,
     public cluster:    Cluster,
-    public request:    Request,
+    public request:    Request
   ) {
     this.consumers = [];
     this.topics = [];
-  };
-
-}
-
-// This is used for filtering partition results
-@Pipe({
-  name: 'clusterSort',
-  pure: false
-})
-
-@Injectable()
-export class ClusterSortPipe implements PipeTransform {
-  transform(array: Array<any>): Array<string> {
-    if (array == null) return array;
-    array.sort((a: any, b: any) => {
-      if (a.request.cluster.toLowerCase() < b.request.cluster.toLowerCase()) {
-        return -1;
-      } else if (a.request.cluster.toLowerCase() > b.request.cluster.toLowerCase()) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-    return array;
   }
+
 }
 

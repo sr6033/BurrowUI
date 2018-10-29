@@ -1,6 +1,6 @@
-import {PipeTransform, Injectable, Pipe} from "@angular/core";
-import {Request} from "./request";
-import {Status} from "./status";
+import {PipeTransform, Injectable, Pipe} from '@angular/core';
+import {Request} from './request';
+import {Status} from './status';
 
 export class Consumer {
 
@@ -25,11 +25,16 @@ export class Consumer {
 @Injectable()
 export class ConsumerSortPipe implements PipeTransform {
   transform(array: Array<any>): Array<string> {
-    if (array == null) return array;
+    if (array == null) {
+      return array;
+    }
     array.sort((a: any, b: any) => {
-      if (a.request.group.toLowerCase() < b.request.group.toLowerCase()) {
+      // Place consumers that start with special characters at the end
+      a = a.status.group.replace(/[_\W]/g, String.fromCharCode(0xFFFF));
+      b = b.status.group.replace(/[_\W]/g, String.fromCharCode(0xFFFF));
+      if (a.toLowerCase() < b.toLowerCase()) {
         return -1;
-      } else if (a.request.group.toLowerCase() > b.request.group.toLowerCase()) {
+      } else if (a.toLowerCase() > b.toLowerCase()) {
         return 1;
       } else {
         return 0;

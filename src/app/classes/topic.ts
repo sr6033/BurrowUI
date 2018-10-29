@@ -1,14 +1,16 @@
-import {Request} from "./request";
-import {PipeTransform, Injectable, Pipe} from "@angular/core";
+import {Request} from './request';
+import {PipeTransform, Injectable, Pipe} from '@angular/core';
 
 export class Topic {
+  public topic = '';
+  public cluster = '';
 
   constructor(
     public error:      string,
     public message:    string,
     public offsets:    number[],
     public request:    Request
-  ) {};
+  ) {}
 
 }
 
@@ -21,11 +23,14 @@ export class Topic {
 @Injectable()
 export class TopicSortPipe implements PipeTransform {
   transform(array: Array<any>): Array<string> {
-    if (array == null) return array;
+    if (array == null) { return array; }
     array.sort((a: any, b: any) => {
-      if (a.request.topic.toLowerCase() < b.request.topic.toLowerCase()) {
+      // Place topics that start with special characters at the end
+      a = a.topic.replace(/[_\W]/g, String.fromCharCode(0xFFFF));
+      b = b.topic.replace(/[_\W]/g, String.fromCharCode(0xFFFF));
+      if (a.toLowerCase() < b.toLowerCase()) {
         return -1;
-      } else if (a.request.topic.toLowerCase() > b.request.topic.toLowerCase()) {
+      } else if (a.toLowerCase() > b.toLowerCase()) {
         return 1;
       } else {
         return 0;

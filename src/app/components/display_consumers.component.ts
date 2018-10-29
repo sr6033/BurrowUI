@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {HomeService} from "../services/home.service";
-import {Consumer} from "../classes/consumer";
+import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
+import {BurrowService} from '../services/burrow.service';
+import {Consumer} from '../classes/consumer';
+import {ClusterHome} from '../classes/clusterHome';
+
 
 @Component({
   selector: 'display_consumer_list',
@@ -9,21 +11,19 @@ import {Consumer} from "../classes/consumer";
 })
 
 export class DisplayConsumersComponent implements OnInit {
+  @Input() cluster: ClusterHome;
   consumers: Consumer[];
 
-  constructor(private homeService: HomeService, private router: Router) {
-    this.consumers = this.homeService.loadedCluster.consumers;
+  constructor(private burrowService: BurrowService, private router: Router) {  }
 
-    this.homeService.selectedCluster.subscribe(cluster => {
-      this.consumers = cluster.consumers;
+  ngOnInit() {
+    this.burrowService.consumerDictionary.subscribe(consumerDict => {
+      this.consumers = consumerDict[this.cluster.clusterName];
     });
   }
 
-  ngOnInit() {
-  }
-
   public analyze(cluster: string, consumer: string) {
-    let url = "/AnalyzeConsumer";
-    this.router.navigate([url], {queryParams: { consumer:consumer, cluster:cluster }});
+    const url = '/AnalyzeConsumer';
+    this.router.navigate([url], {queryParams: { consumer: consumer, cluster: cluster }});
   }
 }

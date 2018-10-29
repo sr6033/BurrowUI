@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from "@angular/router";
-import { BurrowService } from "../services/burrow.service";
+import { ActivatedRoute, Params } from '@angular/router';
+import { BurrowService } from '../services/burrow.service';
 
 @Component({
   selector: 'consumer_application',
@@ -12,18 +12,17 @@ export class AppComponent implements OnInit {
   environment: string;
   burrowHome: string;
 
-  constructor(private route: ActivatedRoute, private burrowService: BurrowService) {
+  constructor(private route: ActivatedRoute, private burrowService: BurrowService) {  }
+
+  ngOnInit() {
     this.burrowService.getHome().subscribe(
       home => {
         this.burrowHome = home.request.host;
       },
       error => {
-        this.burrowHome = "Error";
+        this.burrowHome = 'Error';
       }
     );
-  };
-
-  ngOnInit() {
     this.getParams();
   }
 
