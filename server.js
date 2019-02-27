@@ -29,7 +29,8 @@ app.get('*', (req, res) => {
 const port = process.env.BURROWUI_PORT || '3000';
 app.set('port', port);
 
-const host = process.env.BURROWUI_HOST || '0.0.0.0';
+// const host = process.env.BURROWUI_HOST || '0.0.0.0';
+const host = '127.0.0.1';
 app.set('host', host);
 
 /**
