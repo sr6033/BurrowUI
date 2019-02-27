@@ -36,7 +36,7 @@ export class ConsumerComponent implements OnInit {
       this.consumerService.refreshData();
       if (startWindow === 5) {
         refresh.unsubscribe();
-        refresh = interval(10 * 1000).subscribe(t => {
+        refresh = interval(2 * 1000).subscribe(t => {
           this.consumerService.refreshData();
         });
       }
